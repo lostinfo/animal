@@ -2,5 +2,5 @@
 
 ```
 pip install -r requirements.txt
-python animal.py
+python a.py
 ```

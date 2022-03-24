@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://game.dr34m.cn/main_ctrl_id.html -->
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>操作</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="files/bootstrap.min.css">
+</head>
+
+<body>
+<br>
+<div class="container">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">OPENID</span>
+        </div>
+        <input type="text" id="oid" class="form-control">
+        <div class="input-group-append">
+            <button class="btn btn-outline-primary" onclick="check_rd()" type="button">检查账号存档</button>
+        </div>
+        <input type="text" value="存档星星" id="star" class="form-control" disabled="">
+<!--        <div class="input-group-append">-->
+<!--            <button class="btn btn-outline-success" onclick="vtj_tc(1)" type="button">特价鱼干</button>-->
+<!--            <button class="btn btn-outline-success" onclick="vtj_tc(2)" type="button">特价星星</button>-->
+<!--        </div>-->
+    </div>
+    <div id="tmtip">
+        上次存档时间：<font color="red" id="tm_l">请先检查账号存档</font>，距离现在<font color="red" id="tm_c">请先检查账号存档</font>
+        秒，请确保两次存档之间至少有300秒时间差。
+    </div>
+    <br>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">CODE</span>
+        </div>
+        <input type="text" id="code" class="form-control">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="yg_of_cg">鱼干数量(输多少加多少)</label>
+        </div>
+        <input class="form-control" id="yg_of_cg" type="number" value="10000">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" onclick="btnyg1()" type="button">置万</button>
+            <button class="btn btn-outline-secondary" onclick="btnyg2()" type="button">置9.9千万</button>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="xx_of_cg">星星数量(输多少加多少)</label>
+        </div>
+        <input class="form-control" value="10" type="number" id="xx_of_cg">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" onclick="btnxx1()" type="button">置十</button>
+            <button class="btn btn-outline-secondary" onclick="btnxx2()" type="button">置万</button>
+            <button class="btn btn-outline-secondary" onclick="btnxx3()" type="button">置二万</button>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="pz_of_cg">盘子数量(输多少加多少)</label>
+        </div>
+        <input class="form-control" value="100" type="number" id="pz_of_cg">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" onclick="btnpz1()" type="button">置百</button>
+            <button class="btn btn-outline-secondary" onclick="btnpz2()" type="button">置十万</button>
+            <button class="btn btn-outline-secondary" onclick="btnpz3()" type="button">置二十万</button>
+        </div>
+    </div>
+    <br>
+    <div class="input-group">
+        <button type="button" onclick="btnflz()" style="width: 30%;margin: 0 5% 0 0" class="btn btn-outline-danger">
+            花朵置0
+        </button>
+        <button type="button" onclick="query_yue()" style="width: 30%" class="btn btn-outline-success">查询余额</button>
+        <button type="button" onclick="" style="width: 30%;margin: 0 0 0 5%" class="btn btn-outline-info">(未定义)</button>
+    </div>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">雏</span>
+        </div>
+        <input type="number" value="0" id="f1" class="form-control">
+        <div class="input-group-prepend">
+            <span class="input-group-text">玫</span>
+        </div>
+        <input type="number" value="0" id="f2" class="form-control">
+        <div class="input-group-prepend">
+            <span class="input-group-text">向</span>
+        </div>
+        <input type="number" value="0" id="f3" class="form-control">
+        <div class="input-group-prepend">
+            <span class="input-group-text">蓝</span>
+        </div>
+        <input type="number" value="0" id="f4" class="form-control">
+    </div>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">白</span>
+        </div>
+        <input type="number" value="0" id="f5" class="form-control">
+        <div class="input-group-prepend">
+            <span class="input-group-text">四</span>
+        </div>
+        <input type="number" value="0" id="f6" class="form-control">
+        <div class="input-group-prepend">
+            <span class="input-group-text">樱</span>
+        </div>
+        <input type="number" value="0" id="f7" class="form-control">
+        <div class="input-group-prepend">
+            <span class="input-group-text">枫</span>
+        </div>
+        <input type="number" value="0" id="f8" class="form-control">
+    </div>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">铁</span>
+        </div>
+        <input type="number" value="0" id="f9" class="form-control">
+        <div class="input-group-prepend">
+            <span class="input-group-text">铜</span>
+        </div>
+        <input type="number" value="0" id="f10" class="form-control">
+        <div class="input-group-prepend">
+            <span class="input-group-text">金</span>
+        </div>
+        <input type="number" value="0" id="f11" class="form-control">
+        <div class="input-group-prepend">
+            <span class="input-group-text">种</span>
+        </div>
+        <input type="number" value="0" id="f12" class="form-control">
+    </div>
+    <br>
+    <b>
+        以下请输入编号并以","或者空格隔开，例如输入"7,22,35"或"7 22 35"，无需修改请务必置0
+    </b>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="mail">信件</label>
+        </div>
+        <input class="form-control" value="0" type="text" id="mail">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" onclick="btnxj1()" type="button">置0</button>
+            <button class="btn btn-outline-secondary" onclick="btnxj2()" type="button">全满</button>
+        </div>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="guke">顾客</label>
+        </div>
+        <input class="form-control" value="0" type="text" id="guke">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" onclick="btngk1()" type="button">置0</button>
+            <button class="btn btn-outline-secondary" onclick="btngk2()" type="button">全满</button>
+        </div>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="jinian">纪念物</label>
+        </div>
+        <input class="form-control" value="0" type="text" id="jinian">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" onclick="btnmr1()" type="button">置0</button>
+            <button class="btn btn-outline-secondary" onclick="btnmr2()" type="button">全满</button>
+        </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <button type="button" style="height: 60px" id="btn_ds" class="btn btn-primary btn-block btn-lg"
+                onclick="btntj()">提交
+        </button>
+    </div>
+    <br>
+    <font color="red">
+        以下功能仅供特殊情况下使用（置1即可），用完请立即恢复为0（默认会自动变成0，下次提交生效），否则可能造成信件或者花朵丢失<br>
+        <br>如以下操作与上边冲突，则优先执行下边操作，之后完成上边的操作<br>例如：用下边功能清空信件，同时用上边功能刷满信件，则将会先清空后刷满，这种方式可以解决信件显示异常的问题
+    </font>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">清空地上花朵花洒种子</span>
+        </div>
+        <input type="number" value="0" id="clear1" class="form-control">
+        <div class="input-group-prepend">
+            <span class="input-group-text">清空信箱信件</span>
+        </div>
+        <input type="number" value="0" id="clear2" class="form-control">
+    </div>
+    <br>
+</div>
+
+<script src="files/jquery-3.3.1.min.js">
+</script>
+<script src="files/popper.min.js">
+</script>
+<script src="files/bootstrap.min.js">
+</script>
+<script type="text/javascript">
+function GetQueryString(name) {
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+  var r = window.location.search.substr(1).match(reg);
+  if (r != null) {
+    return unescape(r[2]);
+  }
+  return null;
+}
+
+function getMyDate(str) {
+  var oDate = new Date(str),
+    oYear = oDate.getFullYear(),
+    oMonth = oDate.getMonth() + 1,
+    oDay = oDate.getDate(),
+    oHour = oDate.getHours(),
+    oMin = oDate.getMinutes(),
+    oSen = oDate.getSeconds(),
+    oTime = oYear + '-' + getzf(oMonth) + '-' + getzf(oDay) + ' ' + getzf(oHour) + ':' + getzf(oMin) + ':' +
+      getzf(oSen);
+  return oTime;
+}
+
+function getzf(num) {
+  if (parseInt(num) < 10) {
+    num = '0' + num;
+  }
+  return num;
+}
+
+function query_yue() {
+  var encrpyid = GetQueryString("encrpyid");
+  $.post(
+    "yue", {
+      encrpyid: encrpyid
+    },
+    function (data) {
+      alert(data);
+    }
+  )
+}
+
+function check_rd() {
+  var oid = $("#oid").val();
+  $.post(
+    "checkrd", {
+      oid: oid
+    },
+    function (obj) {
+      var data = JSON.parse(obj);
+      var timestamp = (new Date()).getTime();
+      $("#tm_l").text(getMyDate(data.updateTime));
+      $("#tm_c").text((timestamp - data.updateTime) / 1000);
+      $("#star").val(data.starSum);
+    }
+  )
+}
+
+var encrpyid = GetQueryString("encrpyid");
+if (encrpyid == null) {
+  $("#msg").text("无效访问");
+}
+
+function btnyg1() {
+  $("#yg_of_cg").val('10000');
+}
+
+function btnyg2() {
+  $("#yg_of_cg").val('99000000');
+}
+
+function btnxx1() {
+  $("#xx_of_cg").val('10');
+}
+
+function btnxx2() {
+  $("#xx_of_cg").val('10000');
+}
+
+function btnxx3() {
+  $("#xx_of_cg").val('20000');
+}
+
+function btnpz1() {
+  $("#pz_of_cg").val('100');
+}
+
+function btnpz2() {
+  $("#pz_of_cg").val('100000');
+}
+
+function btnpz3() {
+  $("#pz_of_cg").val('200000');
+}
+
+function btnflz() {
+  for (var i = 1; i < 13; i++) {
+    $("#f" + i).val('0');
+  }
+}
+
+function btnxj1() {
+  $("#mail").val('0');
+}
+
+function btnxj2() {
+  var s = '';
+  for (var i = 61; i > 0; i--) {
+    s = s + i + ','
+  }
+  s = s.substring(0, s.length - 1);
+  $("#mail").val(s);
+}
+
+function btnmr1() {
+  $("#jinian").val('0');
+}
+
+function btnmr2() {
+  var s = '';
+  for (var i = 1; i < 72; i++) {
+    s = s + i + ','
+  }
+  s = s.substring(0, s.length - 1);
+  $("#jinian").val(s);
+}
+
+function btngk1() {
+  $("#guke").val('0');
+}
+
+function btngk2() {
+  var s = '';
+  for (var i = -9; i < 0; i++) {
+    s = s + i + ','
+  }
+  for (var i = 1; i < 86; i++) {
+    s = s + i + ','
+  }
+  for (var i = 201; i < 203; i++) {
+    s = s + i + ','
+  }
+  for (var i = 211; i < 213; i++) {
+    s = s + i + ','
+  }
+  for (var i = 221; i < 223; i++) {
+    s = s + i + ','
+  }
+  for (var i = 241; i < 243; i++) {
+    s = s + i + ','
+  }
+  for (var i = 251; i < 257; i++) {
+    s = s + i + ','
+  }
+  s = s + '-101' + ','
+  s = s.substring(0, s.length - 1);
+  $("#guke").val(s);
+}
+
+function btntj() {
+  $("#btn_ds").attr('disabled', true);
+  $("#btn_ds").text("提交中，请耐心等待");
+  var encrpyid = GetQueryString("encrpyid");
+  var fl = '';
+  for (var i = 1; i < 13; i++) {
+    fl = fl + $("#f" + i).val() + ',';
+  }
+  fl = fl.substring(0, fl.length - 1);//花
+  var star = $("#star").val();//星星
+  var oid = $("#oid").val();//openid
+  var yg = $("#yg_of_cg").val();//鱼+
+  var xx = $("#xx_of_cg").val();//星星+
+  var pz = $("#pz_of_cg").val();// 盘子
+  var ml = $("#mail").val();//信件
+  var mr = $("#jinian").val();//纪念物
+  var gk = $("#guke").val();//顾客
+  var ep = $("#clear1").val() + ',' + $("#clear2").val();//清除1,2
+  var code = $("#code").val();//code
+  $.post("xgtj", {
+    star: star,
+    daili: encrpyid,
+    oid: oid,
+    yg: yg,
+    xx: xx,
+    pz: pz,
+    fl: fl,
+    ml: ml,
+    gk: gk,
+    mr: mr,
+    ep: ep,
+    code: code,
+  }, function (result) {
+    $("#btn_ds").attr('disabled', false);
+    $("#btn_ds").text("提交");
+    alert(result);
+    $("#clear1").val('0');
+    $("#clear2").val('0');
+
+  });
+}
+
+function vtj_tc(tcbh) {
+  var encrpyid = GetQueryString("encrpyid");
+  var star = $("#star").val();
+  var oid = $("#oid").val();
+  $.post("k_vtj", {
+    star: star,
+    daili: encrpyid,
+    oid: oid,
+    tcbh: tcbh
+  }, function (result) {
+    alert(result);
+  });
+}
+</script>
+
+
+</body>
+</html>
